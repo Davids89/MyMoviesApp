@@ -1,0 +1,16 @@
+*{box-sizing:border-box;}
+
+.popular_movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+	flex: 1 1 25%;
+	text-align: center;
+}
+
+.a_popular_movie{
+	flex: 1;
+}
