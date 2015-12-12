@@ -17,21 +17,13 @@
     function config($stateProvider, $urlRouterProvider){
         $stateProvider
             .state('popular', {
-                views : {
-                    "general" : {
-                        url : "/popular",
-                        templateUrl : '/popular'
-                    }
-                }
+                url : '/popular',
+                templateUrl : '/popular'
             })
 
             .state('movie', {
-                views: {
-                    "general" : {
-                        url : '/movie',
-                        templateUrl : '/description'
-                    }
-                }
+                url : '/movie',
+                templateUrl : '/description'
             });
 
         $urlRouterProvider.otherwise('popular');
