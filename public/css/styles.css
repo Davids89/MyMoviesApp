@@ -1,5 +1,13 @@
 *{box-sizing:border-box;}
 
+.generalContent{
+    background: #424242;
+}
+
+.sidenav{
+    background: #212121;
+}
+
 .popular_movies{
     display: flex;
     flex-wrap: wrap;

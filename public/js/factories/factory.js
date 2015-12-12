@@ -17,7 +17,7 @@
 		var Configuration = function(){
 			this.change_keys = undefined;
 			this.images = undefined;
-		}
+		};
 
 		var apiKey = '7c45e91d96f141e78609a00969329847';
 		var baseURL = 'http://api.themoviedb.org/3';
