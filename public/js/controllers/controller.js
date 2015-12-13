@@ -38,7 +38,7 @@
 
         function loadPage(){
 
-             var configuration = new Configuration();
+            var configuration = new Configuration();
 
             configuration.getConfiguration();
 

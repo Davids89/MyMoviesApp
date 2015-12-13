@@ -32,7 +32,7 @@
 					self.change_keys = response.data.change_keys;
 					self.images = response.data.images;
 				})
-		}
+		};
 
 		return Configuration;
 	}
