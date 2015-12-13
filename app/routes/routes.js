@@ -24,7 +24,7 @@ module.exports = function(app){
                         data = JSON.parse(data.toString());
 
                         data.results.map(function(movie){
-                            console.log(movie.original_title);
+                            console.log(movie);
                         })
                     } catch (e) {
                         console.log(e);
