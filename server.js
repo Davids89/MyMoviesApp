@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 app.use(session({ secret : 'ilovescotchscotchyscotchscotch' }));
 app.use(flash());
 
-require('./app/routes.js')(app);
+require('./app/routes/routes.js')(app);
 
 app.listen(port);
 console.log('Servidor funcionando en el puerto ' + port);
