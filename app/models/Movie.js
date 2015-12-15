@@ -10,10 +10,7 @@ var MovieSchema = mongoose.Schema({
     original_title : String,
     original_language : String,
     title : String,
-    popularity : Number,
     vote_count : Number,
-    video : Boolean,
-    vote_average : Number
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
