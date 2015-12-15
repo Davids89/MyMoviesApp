@@ -5,3 +5,5 @@ var CommentSchema = mongoose.Schema({
 	content : String,
 	likes : Number
 });
+
+module.exports = mongoose.model('Comment', CommentSchema);
