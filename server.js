@@ -28,5 +28,8 @@ app.use(flash());
 
 require('./app/routes/routes.js')(app);
 
+//api files
+require('./app/api/movies_api.js')(app);
+
 app.listen(port);
 console.log('Servidor funcionando en el puerto ' + port);

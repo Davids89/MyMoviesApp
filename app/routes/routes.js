@@ -41,11 +41,7 @@ module.exports = function(app){
                                     mMovie.original_title = movie.original_title;
                                     mMovie.original_language = movie.original_language;
                                     mMovie.title = movie.title;
-                                    mMovie.popularity = movie.popularity;
-                                    mMovie.vote_count = movie.vote_count;
-                                    mMovie.video = movie.video;
-                                    mMovie.vote_average = movie.vote_average;
-
+                                
                                     mMovie.save(function(err){
                                         if(err){
                                             res.status(500).json({ message : "Error saving movie"});
