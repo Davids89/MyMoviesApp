@@ -11,7 +11,11 @@ var MovieSchema = mongoose.Schema({
     original_language : String,
     title : String,
     vote_count : Number,
-    cast : [String]
+    cast : [String],
+    production_companies : [{
+        name : String,
+        id:Number
+    }]
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
