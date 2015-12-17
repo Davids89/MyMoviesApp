@@ -49,6 +49,7 @@ function setMovieValues(newMovie, APImovie){
 	newMovie.original_title = APImovie.original_title;
 	newMovie.original_language = APImovie.original_language;
 	newMovie.title = APImovie.title;
+    //TODO coger el production_companies
 }
 
 function saveMovieDetails(movie){
