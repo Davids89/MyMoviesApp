@@ -1,8 +1,34 @@
 var fs = require('fs');
+var array = fs.readFileSync(__dirname + "/cinemas.txt").toString().split('\n');
+var database = require('./database.js');
+var Cinema = require('../app/models/Cinema.js');
 
-var array = fs.readFileSync('./cinemas.txt').toString().split('\n');
-
-array = cleanArrayItems(array);
+function main(){
+    
+    array = cleanArrayItems(array);
+    
+    array.map(function(cine){
+    var cines = getCinemaFromInputReaded(cine);
+    
+    Cinema.find({}, function(err, cinemas){
+        if(cinemas.length == 0){
+            cines.map(function(cine){
+                var mCine = new Cinema();
+                mCine.name = cine.name;
+                mCine.number_cinema_rooms = cine.number_cinema_rooms;
+                mCine.city = cine.city;
+                
+                mCine.save(function(err){
+                    if(err){
+                        console.log("Error saving cinema");
+                    }
+                })
+            })
+        }
+    })
+})
+    
+}//final main
 
 function cleanArrayItems(array){
     array.map(function(item, idx){
@@ -10,13 +36,9 @@ function cleanArrayItems(array){
             array.splice(idx, 1);
         }
     })
-    
-    return array;
-}
 
-array.map(function(cine){
-    getCinemaFromInputReaded(cine);
-})
+    return array;
+}//final cleanArrayItems
 
 function getCinemaFromInputReaded(item){
     
@@ -25,6 +47,8 @@ function getCinemaFromInputReaded(item){
         number_cinema_rooms : Number,
         city : String
     }
+    
+    var cines = [];
     
     var count = countWordsInItem(item);
     
@@ -36,8 +60,11 @@ function getCinemaFromInputReaded(item){
         cine.name = getCinemaNameFromItemSplit(itemSplit);
         cine.number_cinema_rooms = getRoomsFromItemSplit(itemSplit);
         cine.city = getCityFromItemSplit(itemSplit);
-        console.log(cine);
+        console.log(cine.city);
+        cines.push(cine);
     }
+    
+    return cines;
 
 }
 
@@ -59,20 +86,16 @@ function getCinemaNameFromItemSplit(item){
 }
 
 function getRoomsFromItemSplit(item){
-    var aux = item[1].split('Salas') || item[1].split('Sala');
+    var aux = item[1].split('Salas');
     return aux[0].trim();
 }
 
 function getCityFromItemSplit(item){
     
-    var aux;
+    var aux = item[1].split('Salas');
     
-    if(item.indexOf('Salas') > -1){
-        aux = item[1].split('Salas');
-    }else{
-        aux =  item[1].split('Sala');
-    }
-
     var cityName = aux[1].replace('(','').replace(')','').trim();
     return cityName;
 }
+
+main();
