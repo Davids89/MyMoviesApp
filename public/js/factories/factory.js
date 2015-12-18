@@ -20,7 +20,7 @@
 		};
 
 		var apiKey = '7c45e91d96f141e78609a00969329847';
-		var baseURL = 'http://api.themoviedb.org/3';
+		var baseURL = 'https://api.themoviedb.org/3';
 
 		Configuration.prototype.getConfiguration = function(){
 			var self = this;
