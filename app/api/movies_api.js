@@ -67,8 +67,33 @@ module.exports = function(app){
     
     app.get('/checkIsRepeated', function(req, res){
         
+        var repeated = false;
+        
         Movie.find({}, function(err, movies){
+            if(err){
+                res.status(500).json({ message : "Error in server"});
+            }
             
+            Movie.find({}, function(err, movies){
+                if(err){
+                    res.status(500).json({ message : "Error in server. Find movie"});
+                }
+                
+                if(movies.length > 0){
+                while(movies.length > 0){
+                    var mMovie = movies.shift();
+                    
+                    if(findMovieInArray(movies, mMovie)){
+                        console.log("Movie: ", mMovie.title, "repeated");
+                        repeated = true;
+                    }
+                }
+                
+                if(!repeated){
+                    console.log("No movies repeated");
+                }
+            }
+            })
         })
     })
 
