@@ -1,10 +1,12 @@
 var Movie = require('../models/Movie.js');
+var constants = require('../../config/constants.js');
+var http = require('http');
 
 module.exports = function(app){
 
 	app.get('/getPopularMovies', function(req, res){
 
-        http.get('http://api.themoviedb.org/3/movie/popular?api_key=7c45e91d96f141e78609a00969329847',
+        http.get(constants.popular_movies,
             function(resp){
                 console.log("Respuesta correcta " + resp.statusCode);
 
@@ -19,15 +21,41 @@ module.exports = function(app){
                         data = JSON.parse(data.toString());
 
                         Movie.find({}, function(err, movies){
-                            if(movies.length > 0){
-                                console.log(movies);
+                            
+                            if(err){
+                                res.status(500).json({ message : "Error in server. Find movie"});
                             }else{
-                                data.results.map(function(movie){
-                                    //console.log(movie);
+                                
+                                if(movies.length > 0){
+                                    //res.status(200).json({ message : "Movies stored"});
+                                    
+                                    console.log("entra");
+                                    
+                                    data.results.map(function(movie){
+                                        if(findMovieInArray(movies, movie)){
+                                            console.log("Ya esta almacenada");
+                                        }else{
+                                            var mMovie = new Movie();
+                                            setMovieValues(mMovie, movie);
+                                            if(saveMovieDetails(mMovie)){
+                                                res.status(200).json({message : "Saved successfully"});
+                                            }else{
+                                                res.status(500).json({message : "Error"});
+                                            }
+                                        }
+                                    })
+                                    
+                                }else{
+                                    data.results.map(function(movie){
                                     var mMovie = new Movie();
                                     setMovieValues(mMovie, movie);
-                                    saveMovieDetails(mMovie);
+                                    if(saveMovieDetails(mMovie)){
+                                        res.status(200).json({message : "Saved successfully"});
+                                    }else{
+                                        res.status(500).json({message : "Error"});
+                                    }
                                 })
+                                }
                             }
                         });
                     } catch (e) {
@@ -36,6 +64,13 @@ module.exports = function(app){
                 })
         })
     });
+    
+    app.get('/checkIsRepeated', function(req, res){
+        
+        Movie.find({}, function(err, movies){
+            
+        })
+    })
 
 }
 
@@ -55,7 +90,19 @@ function setMovieValues(newMovie, APImovie){
 function saveMovieDetails(movie){
 	movie.save(function(err){
 	    if(err){
-	        res.status(500).json({ message : "Error saving movie"});
+	        return false;
+	    }else{
+	        return true;
 	    }
 	})
+}
+
+function findMovieInArray(array, movie){
+    array.map(function(mMovie){
+        if(mMovie.id == movie.id){
+            return true;
+        }
+    })
+    
+    return false;
 }
