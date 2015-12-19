@@ -23,7 +23,10 @@
 
             .state('movie', {
                 url : '/movie',
-                templateUrl : '/description'
+                templateUrl : '/description',
+                params : {
+                    'movie' : 'aa'
+                }
             });
 
         $urlRouterProvider.otherwise('popular');
