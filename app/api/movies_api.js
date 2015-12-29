@@ -21,16 +21,16 @@ module.exports = function(app){
                         data = JSON.parse(data.toString());
 
                         Movie.find({}, function(err, movies){
-                            
+
                             if(err){
                                 res.status(500).json({ message : "Error in server. Find movie"});
                             }else{
-                                
+
                                 if(movies.length > 0){
                                     //res.status(200).json({ message : "Movies stored"});
-                                    
+
                                     console.log("entra");
-                                    
+
                                     data.results.map(function(movie){
                                         if(findMovieInArray(movies, movie)){
                                             console.log("Ya esta almacenada");
@@ -44,7 +44,7 @@ module.exports = function(app){
                                             }
                                         }
                                     })
-                                    
+
                                 }else{
                                     data.results.map(function(movie){
                                     var mMovie = new Movie();
@@ -64,40 +64,51 @@ module.exports = function(app){
                 })
         })
     });
-    
+
     app.get('/checkIsRepeated', function(req, res){
-        
+
         var repeated = false;
-        
+
         Movie.find({}, function(err, movies){
             if(err){
                 res.status(500).json({ message : "Error in server"});
             }
-            
+
             Movie.find({}, function(err, movies){
                 if(err){
                     res.status(500).json({ message : "Error in server. Find movie"});
                 }
-                
+
                 if(movies.length > 0){
                 while(movies.length > 0){
                     var mMovie = movies.shift();
-                    
+
                     if(findMovieInArray(movies, mMovie)){
                         console.log("Movie: ", mMovie.title, "repeated");
                         repeated = true;
                     }
                 }
-                
+
                 if(!repeated){
                     console.log("No movies repeated");
                 }
             }
             })
         })
+    });
+
+    app.get('/movie/:id', function(req, res){
+
+        Movie.findOne({ id : req.params.id}, function(err, movie){
+            if(err){
+                return res.status(500).json({ message : 'Server error'});
+            }
+
+            return res.status(200).json({ movie : movie});
+        })
     })
 
-}
+};
 
 function setMovieValues(newMovie, APImovie){
 	newMovie.poster_path = APImovie.poster_path;
@@ -128,6 +139,6 @@ function findMovieInArray(array, movie){
             return true;
         }
     })
-    
+
     return false;
 }

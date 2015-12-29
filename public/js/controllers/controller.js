@@ -22,10 +22,10 @@
             })
 
             .state('movie', {
-                url : '/movie',
+                url : '/movie/:movieID',
                 templateUrl : '/description',
-                params : {
-                    'movie' : 'aa'
+                controller : function($stateParams){
+                    console.log($stateParams);
                 }
             });
 
@@ -61,6 +61,6 @@
             });
 
         }
-    
+
     }
 })();

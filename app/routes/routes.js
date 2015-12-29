@@ -7,7 +7,6 @@ module.exports = function(app){
     });
 
     app.get('/popular', function(req, res){
-        console.log("hola");
         res.render('popular.ejs');
     });
 

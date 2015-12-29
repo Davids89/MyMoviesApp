@@ -3,7 +3,7 @@
 
 	angular
 		.module('listMovies', [])
-		.factory('ListMovies', listMovies);
+		.service('ListMovies', listMovies);
 
 	listMovies.$inject = ['$http'];
 
@@ -15,7 +15,10 @@
 		return {
 			getPopular : function(){
 				return $http.get(baseURL + '/movie/popular' + '?api_key=' + apiKey);
-			}
+			},
+            getMovie : function(id){
+                return $http.get('/movie/'+id);
+            }
 		}
 	}
 })();
