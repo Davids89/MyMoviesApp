@@ -27,7 +27,6 @@
 
 			return $http.get(baseURL + '/configuration' + '?api_key=' + apiKey)
 				.then(function(response){
-					console.log(response);
 
 					self.change_keys = response.data.change_keys;
 					self.images = response.data.images;

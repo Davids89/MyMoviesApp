@@ -2,7 +2,7 @@
     <div ng-repeat="movie in vm.popular" class="movie">
         <div class="a_popular_movie">
             <a ui-sref="movie">
-                <img src='https://image.tmdb.org/t/p/w154/{{movie.poster_path}}'>
+                <ng-film></ng-film>
             </a>
         </div>
     </div>

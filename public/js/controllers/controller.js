@@ -60,7 +60,6 @@
                 vm.popular.push(mMovie);
             });
 
-            console.log(vm.popular);
         }
     
     }
