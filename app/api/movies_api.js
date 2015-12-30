@@ -120,6 +120,7 @@ function setMovieValues(newMovie, APImovie){
 	newMovie.original_title = APImovie.original_title;
 	newMovie.original_language = APImovie.original_language;
 	newMovie.title = APImovie.title;
+    newMovie.production_companies = APImovie.production_companies;
     //TODO coger el production_companies
 }
 
