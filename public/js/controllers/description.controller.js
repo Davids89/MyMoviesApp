@@ -12,6 +12,7 @@
         var vm2 = this;
 
         vm2.movie = window.movie;
+        vm2.movie_info = undefined;
 
         getMovie();
 
@@ -20,7 +21,9 @@
 
             moviesFactory.getMovie(movieID)
                 .success(function(resp){
-                    console.log(resp);
+                    vm2.movie_info = resp.movie;
+
+                    console.log(vm2.movie_info);
                 })
         }
 

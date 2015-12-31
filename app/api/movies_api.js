@@ -2,7 +2,7 @@ var Movie = require('../models/Movie.js');
 var constants = require('../../config/constants.js');
 var http = require('http');
 
-module.exports = function(app){
+module.exports = function(app, config){
 
 	app.get('/getPopularMovies', function(req, res){
 
@@ -99,6 +99,8 @@ module.exports = function(app){
 
     app.get('/movie/:id', function(req, res){
 
+        console.log(config);
+
         Movie.findOne({ id : req.params.id}, function(err, movie){
             if(err){
                 return res.status(500).json({ message : 'Server error'});
@@ -106,7 +108,7 @@ module.exports = function(app){
 
             return res.status(200).json({ movie : movie});
         })
-    })
+    });
 
 };
 
@@ -139,7 +141,8 @@ function findMovieInArray(array, movie){
         if(mMovie.id == movie.id){
             return true;
         }
-    })
+    });
 
     return false;
 }
+

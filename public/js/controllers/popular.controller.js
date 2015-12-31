@@ -42,6 +42,8 @@
 
             configuration.getConfiguration();
 
+            console.log(configuration);
+
             moviesFactory.getPopular()
                 .success(function(response){
                     muestra10MasPopulares(response.results);

@@ -14,7 +14,7 @@
 
 		return {
 			getPopular : function(){
-				return $http.get(baseURL + '/movie/popular' + '?api_key=' + apiKey);
+				return $http.get(baseURL + '/movie/popular' + '?api_key=' + apiKey + '&language=es');
 			},
             getMovie : function(id){
                 return $http.get('/movie/'+id);
