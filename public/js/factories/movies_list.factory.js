@@ -2,12 +2,12 @@
 	'use strict';
 
 	angular
-		.module('listMovies', [])
-		.service('ListMovies', listMovies);
+		.module('moviesFactory')
+		.service('moviesFactory', moviesFactory);
 
-	listMovies.$inject = ['$http'];
+	moviesFactory.$inject = ['$http'];
 
-	function listMovies($http){
+	function moviesFactory($http){
 
 		var apiKey = '7c45e91d96f141e78609a00969329847';
 		var baseURL = 'https://api.themoviedb.org/3';

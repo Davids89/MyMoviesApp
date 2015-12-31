@@ -8,11 +8,11 @@
     'use strict';
 
     angular
-        .module('controller', ['ngMaterial', 'ui.router'])
+        .module('popularController', ['ngMaterial', 'ui.router'])
         .config(config)
         .controller('myController', controller);
 
-    controller.$inject = ['Configuration', '$window', 'ListMovies', 'Movie'];
+    controller.$inject = ['Configuration', '$window', 'moviesFactory', 'Movie'];
 
     function config($stateProvider, $urlRouterProvider){
         $stateProvider
@@ -23,16 +23,13 @@
 
             .state('movie', {
                 url : '/movie/:movieID',
-                templateUrl : '/description',
-                controller : function($stateParams){
-                    console.log($stateParams);
-                }
+                templateUrl : '/description'
             });
 
         $urlRouterProvider.otherwise('popular');
     }
 
-    function controller(Configuration, $window, ListMovies, Movie) {
+    function controller(Configuration, $window, moviesFactory, Movie) {
 
         var vm = this;
         vm.popular = [];
@@ -45,7 +42,7 @@
 
             configuration.getConfiguration();
 
-            ListMovies.getPopular()
+            moviesFactory.getPopular()
                 .success(function(response){
                     muestra10MasPopulares(response.results);
                 })

@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('controller')
+        .module('popularController')
         .controller('descriptionController', controller);
 
     //controller.$inject = [];
 
-    function controller($stateParams, ListMovies){
+    function controller($stateParams, moviesFactory){
 
         var vm2 = this;
 
@@ -18,7 +18,7 @@
         function getMovie(){
             var movieID = $stateParams.movieID;
 
-            ListMovies.getMovie(movieID)
+            moviesFactory.getMovie(movieID)
                 .success(function(resp){
                     console.log(resp);
                 })
