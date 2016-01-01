@@ -15,7 +15,8 @@ var MovieSchema = mongoose.Schema({
     production_companies : [{
         name : String,
         id:Number
-    }]
+    }],
+    popular : { type : Boolean, default : false}
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);

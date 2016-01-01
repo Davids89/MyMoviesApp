@@ -12,7 +12,7 @@
         .config(config)
         .controller('myController', controller);
 
-    controller.$inject = ['Configuration', '$window', 'moviesFactory', 'Movie'];
+    controller.$inject = ['$window', 'moviesFactory', 'Movie'];
 
     function config($stateProvider, $urlRouterProvider){
         $stateProvider
@@ -29,7 +29,7 @@
         $urlRouterProvider.otherwise('popular');
     }
 
-    function controller(Configuration, $window, moviesFactory, Movie) {
+    function controller($window, moviesFactory, Movie) {
 
         var vm = this;
         vm.popular = [];
@@ -38,15 +38,9 @@
 
         function loadPage(){
 
-            var configuration = new Configuration();
-
-            configuration.getConfiguration();
-
-            console.log(configuration);
-
             moviesFactory.getPopular()
                 .success(function(response){
-                    muestra10MasPopulares(response.results);
+                    muestra10MasPopulares(response.movies);
                 })
         }
 

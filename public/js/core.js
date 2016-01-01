@@ -4,4 +4,4 @@
 */
 
 
-angular.module('app', ['popularController', 'configFactory', 'moviesFactory', 'movies_listFactory']);
+angular.module('app', ['popularController', 'moviesFactory', 'movies_listFactory']);

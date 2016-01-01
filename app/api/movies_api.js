@@ -29,32 +29,46 @@ module.exports = function(app, config){
                                 if(movies.length > 0){
                                     //res.status(200).json({ message : "Movies stored"});
 
-                                    console.log("entra");
+                                    var movieArray = [];
 
                                     data.results.map(function(movie){
+
                                         if(findMovieInArray(movies, movie)){
                                             console.log("Ya esta almacenada");
                                         }else{
-                                            var mMovie = new Movie();
-                                            setMovieValues(mMovie, movie);
-                                            if(saveMovieDetails(mMovie)){
-                                                res.status(200).json({message : "Saved successfully"});
+
+                                            movieArray.push(movie);
+
+                                            /*if(saveMovieDetails(mMovie)){
+                                                return res.status(200).json({message : "Saved successfully"});
                                             }else{
-                                                res.status(500).json({message : "Error"});
-                                            }
+                                                return res.status(500).json({message : "Error"});
+                                            }*/
                                         }
-                                    })
+                                    });
+
+                                    if(setMovieValues(movieArray)){
+                                        return res.status(200).json({ message : "Success creating movies"});
+                                    }else{
+                                        return res.status(500).json({ message : "Error creating movie"});
+                                    }
 
                                 }else{
+
+                                    var movieArray = [];
+
                                     data.results.map(function(movie){
-                                    var mMovie = new Movie();
-                                    setMovieValues(mMovie, movie);
-                                    if(saveMovieDetails(mMovie)){
-                                        res.status(200).json({message : "Saved successfully"});
+
+                                        movieArray.push(movie);
+
+                                    });
+
+                                    if(setMovieValues(movieArray)){
+                                        console.log("hola");
+                                        return res.status(200).json({ message : "Success creating movie"});
                                     }else{
-                                        res.status(500).json({message : "Error"});
+                                        return res.status(500).json({ message : "Error creating movie"});
                                     }
-                                })
                                 }
                             }
                         });
@@ -71,12 +85,12 @@ module.exports = function(app, config){
 
         Movie.find({}, function(err, movies){
             if(err){
-                res.status(500).json({ message : "Error in server"});
+                return res.status(500).json({ message : "Error in server"});
             }
 
             Movie.find({}, function(err, movies){
                 if(err){
-                    res.status(500).json({ message : "Error in server. Find movie"});
+                    return res.status(500).json({ message : "Error in server. Find movie"});
                 }
 
                 if(movies.length > 0){
@@ -99,8 +113,6 @@ module.exports = function(app, config){
 
     app.get('/movie/:id', function(req, res){
 
-        console.log(config);
-
         Movie.findOne({ id : req.params.id}, function(err, movie){
             if(err){
                 return res.status(500).json({ message : 'Server error'});
@@ -110,30 +122,44 @@ module.exports = function(app, config){
         })
     });
 
+    app.get('/popularMovies', function(req, res){
+        Movie.find({ popular : true}, function(err, movies){
+            if(err){
+                return res.status(500).json({ message : 'Server error'});
+            }
+
+            return res.status(200).json({ movies : movies});
+        })
+    })
+
 };
 
-function setMovieValues(newMovie, APImovie){
-	newMovie.poster_path = APImovie.poster_path;
-	newMovie.adult = APImovie.adult;
-	newMovie.overview = APImovie.overview;
-	newMovie.release_date = APImovie.release_date;
-	newMovie.genre_ids = APImovie.genre_ids;
-	newMovie.id = APImovie.id;
-	newMovie.original_title = APImovie.original_title;
-	newMovie.original_language = APImovie.original_language;
-	newMovie.title = APImovie.title;
-    newMovie.production_companies = APImovie.production_companies;
-    //TODO coger el production_companies
-}
+function setMovieValues(APImovie){
 
-function saveMovieDetails(movie){
-	movie.save(function(err){
-	    if(err){
-	        return false;
-	    }else{
-	        return true;
-	    }
-	})
+    APImovie.map(function(movie){
+
+        movie.poster_path = 'https://image.tmdb.org/t/p/w154' + movie.poster_path;
+        movie.popular = true;
+
+        Movie.findOne({ id : movie.id }, function(err, find_movie){
+            if(err){
+                return false;
+            }
+            if(find_movie == null){
+                Movie.create(movie, function(err, created_movie){
+                    if(err){
+                        return false;
+                    }
+                })
+            }
+        })
+    });
+
+    return true;
+
+    /*Movie.create(APImovie, function(err, movies){
+        console.log(movies);
+    });*/
 }
 
 function findMovieInArray(array, movie){
