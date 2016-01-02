@@ -1,3 +1,7 @@
+html *{
+    font-family: 'Roboto', sans-serif;
+}
+
 
 .background{
     height: 300px;
@@ -8,4 +12,18 @@
     min-height: 100%;
     max-width: 100%;
     z-index: 1;
+}
+
+.poster > img {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    z-index: 2;
+    border: 1px solid white;
+}
+
+.name > h3{
+    position: absolute;
+    color: white;
+    left: 200px;
 }
