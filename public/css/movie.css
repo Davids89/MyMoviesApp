@@ -2,6 +2,10 @@ html *{
     font-family: 'Roboto', sans-serif;
 }
 
+.description {
+    padding-bottom: 20px;
+}
+
 
 .background{
     height: 300px;
@@ -23,7 +27,24 @@ html *{
 }
 
 .name > h3{
-    position: absolute;
     color: white;
-    left: 200px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+}
+
+.movie_data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sinopsis_card{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.data_card{
+    width: 30%;
 }

@@ -4,16 +4,39 @@
         <img src="../public/images/star_wars.jpg">
     </div>
 
-    <div class="poster">
-        <img ng-src="{{vm2.movie_info.poster_path}}">
+    <div class="info">
+
+        <div class="poster">
+            <img ng-src="{{vm2.movie_info.poster_path}}">
+        </div>
+
+        <div class="name">
+            <h3 class="md-title">
+                {{vm2.movie_info.title}}
+            </h3>
+        </div>
+
+        <div class="movie_data">
+            <md-card class="sinopsis_card">
+                <md-card-title>
+                    <md-card-title-text class="md-title">
+                        Sinopsis
+                    </md-card-title-text>
+                </md-card-title>
+
+                <md-card-content>
+                    {{vm2.movie_info.overview}}
+                </md-card-content>
+            </md-card>
+
+            <md-card class="data_card">
+                <md-card-title>
+                    <md-card-title-text>
+                        Datos
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
     </div>
-
-    <div class="name">
-        <h3 class="md-title">
-            {{vm2.movie_info.title}}
-        </h3>
-    </div>
-
-
 
 </div>
