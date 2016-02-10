@@ -14,10 +14,6 @@ var database = require('./config/database.js');
 var http = require('http');
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 02 14 * * 3', function(){
-    console.log("hola");
-}, null, true, 'Europe/Madrid');
-
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
@@ -43,7 +39,9 @@ require('./app/routes/routes.js')(app);
 //require('./config/addCinemas.js');
 
 //task
-
+new CronJob('00 24 16 * * 3', function(){
+    require('./config/popularMovies.js');
+}, null, true, 'Europe/Madrid');
 
 app.listen(port);
 console.log('Servidor funcionando en el puerto ' + port);
