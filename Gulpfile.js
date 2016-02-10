@@ -1,30 +1,18 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var nodemon = require('gulp-nodemon');
+var connect = require('gulp-connect');
 
-gulp.task('nodemon', function(cb){
+gulp.task('watch', function(){
+    gulp.watch('./public/js/*.js', ['js']);
+    gulp.watch('./public/js/controllers/*.js', ['js']);
+});
 
-    console.log(cb);
-
-    var started = false;
-
-    return nodemon({
-        script : 'server.js'
-    }).on('start', function(){
-        if(!started){
-            cb();
-            started = true;
-        }
+gulp.task('webserver', function(){
+    connect.server({
+        root : './server.js',
+        hostname : '127.0.0.1',
+        port : 9000,
+        livereload : true
     })
 });
 
-gulp.task('browser-sync', ['nodemon'], function(){
-   browserSync.init(null, {
-       proxy: 'localhost:8080',
-       files : ["public/**/*.*"],
-       browser : 'google chrome',
-       port : 8080
-   });
-});
-
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['webserver']);

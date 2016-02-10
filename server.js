@@ -34,12 +34,11 @@ require('./app/routes/routes.js')(app);
 
 //api files
 
-
 //cinema file
 //require('./config/addCinemas.js');
 
-//app.listen(port);
-//console.log('Servidor funcionando en el puerto ' + port);
+app.listen(port);
+console.log('Servidor funcionando en el puerto ' + port);
 
 function getConfiguration(){
     http.get('http://api.themoviedb.org/3/configuration?api_key=7c45e91d96f141e78609a00969329847', function(resp){
