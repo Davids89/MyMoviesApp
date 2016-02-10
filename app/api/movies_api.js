@@ -26,24 +26,19 @@ module.exports = function(app, config){
                                 res.status(500).json({ message : "Error in server. Find movie"});
                             }else{
 
+                                var movieArray = [];
+
                                 if(movies.length > 0){
                                     //res.status(200).json({ message : "Movies stored"});
 
-                                    var movieArray = [];
+                                    movieArray = [];
 
                                     data.results.map(function(movie){
 
                                         if(findMovieInArray(movies, movie)){
                                             console.log("Ya esta almacenada");
                                         }else{
-
                                             movieArray.push(movie);
-
-                                            /*if(saveMovieDetails(mMovie)){
-                                                return res.status(200).json({message : "Saved successfully"});
-                                            }else{
-                                                return res.status(500).json({message : "Error"});
-                                            }*/
                                         }
                                     });
 
@@ -55,12 +50,10 @@ module.exports = function(app, config){
 
                                 }else{
 
-                                    var movieArray = [];
+                                    movieArray = [];
 
                                     data.results.map(function(movie){
-
                                         movieArray.push(movie);
-
                                     });
 
                                     if(setMovieValues(movieArray)){
@@ -76,38 +69,6 @@ module.exports = function(app, config){
                         console.log(e);
                     }
                 })
-        })
-    });
-
-    app.get('/checkIsRepeated', function(req, res){
-
-        var repeated = false;
-
-        Movie.find({}, function(err, movies){
-            if(err){
-                return res.status(500).json({ message : "Error in server"});
-            }
-
-            Movie.find({}, function(err, movies){
-                if(err){
-                    return res.status(500).json({ message : "Error in server. Find movie"});
-                }
-
-                if(movies.length > 0){
-                while(movies.length > 0){
-                    var mMovie = movies.shift();
-
-                    if(findMovieInArray(movies, mMovie)){
-                        console.log("Movie: ", mMovie.title, "repeated");
-                        repeated = true;
-                    }
-                }
-
-                if(!repeated){
-                    console.log("No movies repeated");
-                }
-            }
-            })
         })
     });
 

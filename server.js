@@ -12,6 +12,11 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var database = require('./config/database.js');
 var http = require('http');
+var CronJob = require('cron').CronJob;
+
+new CronJob('00 02 14 * * 3', function(){
+    console.log("hola");
+}, null, true, 'Europe/Madrid');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -36,6 +41,9 @@ require('./app/routes/routes.js')(app);
 
 //cinema file
 //require('./config/addCinemas.js');
+
+//task
+
 
 app.listen(port);
 console.log('Servidor funcionando en el puerto ' + port);
