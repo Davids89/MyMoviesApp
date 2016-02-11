@@ -13,6 +13,7 @@ var session = require('express-session');
 var database = require('./config/database.js');
 var http = require('http');
 var CronJob = require('cron').CronJob;
+var passport = require('passport');
 
 app.use(morgan('dev'));
 app.use(cookieParser());
@@ -29,9 +30,13 @@ app.set('view engine', 'ejs');
 app.use(session({ secret : 'ilovescotchscotchyscotchscotch' }));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 var config = getConfiguration();
 
-require('./app/routes/routes.js')(app);
+require('./app/routes/routes.js')(app, passport);
+require('./app/routes/session.js')(app, passport);
 
 //api files
 
