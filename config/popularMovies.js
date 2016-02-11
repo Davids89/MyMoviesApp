@@ -18,6 +18,18 @@ var getPopularMovies = function(){
                 try {
                     data = JSON.parse(data.toString());
 
+                    Movie.find({popular : true}, function(err, popular_movie){
+                       popular_movie.map(function(movie){
+                           movie.popular = false;
+                       });
+
+                        popular_movie.save(function(err){
+                            if(err){
+                                console.log("Error updating popular movies");
+                            }
+                        })
+                    });
+
                     Movie.find({}, function(err, movies){
 
                         if(err){
@@ -79,7 +91,7 @@ function setMovieValues(APImovie){
 
     APImovie.map(function(movie){
 
-        movie.poster_path = 'https://image.tmdb.org/t/p/w154' + movie.poster_path;
+        movie.poster_path = constants.poster_size + movie.poster_path;
         movie.popular = true;
 
         Movie.findOne({ id : movie.id }, function(err, find_movie){

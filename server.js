@@ -57,6 +57,7 @@ function getConfiguration(){
         resp.on('end', function(){
             try{
                 require('./app/api/movies_api.js')(app, data);
+                require('./app/api/genres_api.js')(app, data);
             }catch(e){
                 console.log(e);
             }

@@ -1,54 +1,27 @@
 var Genre = require('../models/Genre.js');
-var constants = require('../config/constants.js');
+var Movie = require('../models/Movie.js');
+var constants = require('../../config/constants.js');
+var http = require('http');
 
-module.exports = function(app){
+module.exports = function (app, config) {
 
-	app.get('/getGenres', function(req, res){
+    app.get('/getGenres', function (req, res) {
+        Genre.find({}, function (err, genres) {
 
-        http.get(popular.get_genres,
-            function(resp){
-                var data = '';//sino da error de undefined (syntaxerror undefined token u
-
-                resp.on('data', function(chunk){
-
-                    data += chunk;
-                });
-
-                resp.on('end', function(){
-                    try {
-                        data = JSON.parse(data.toString());
-                        
-                        Genre.find({}, function(err, genres){
-                            
-                            if(err){
-                                res.status(500).json({ message : "Error in server. Find genres"});
-                            }else{
-                                
-                            }
-                            
-                            if(genres.length > 0){
-                                
-                            }else{
-                                data.genres.map(function(genre){
-                                    var mGenre = new Genre();
-                                    mGenre.id = genre.id;
-                                    mGenre.name = genre.name;
-
-                                    mGenre.save(function(err){
-                                        if(err){
-                                            res.status(500).json({ message : "Error saving genre"});
-                                        }
-                                        res.status(200).json({message : "Genres saved successfully"});
-                                    })
-                                })
-                            }
-                        });
-                    }catch(e){
-                        console.log(e);
-                    }
-                })
-            })
+            if (err)
+                return res.status(500).json({message: "Error searching genres"});
+            return res.status(200).json(genres);
+        });
     });
 
+    app.get('/getByGenre/:genreId', function (req, res) {
 
-}
+        var genreId = req.params.genreId;
+
+        Movie.find({genre_ids: {$in : [genreId]}}, function (err, movies) {
+            if (err)
+                return res.status(500).json({message: err});
+            return res.status(200).json(movies);
+        });
+    });
+};
