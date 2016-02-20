@@ -1,5 +1,5 @@
 (function(){
-    angular.module('popularController')
+    angular.module('app')
         .directive('ngFilm', function(){
             return {
                 restrict : 'E',

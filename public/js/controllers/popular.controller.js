@@ -8,7 +8,7 @@
     'use strict';
 
     angular
-        .module('popularController', ['ngMaterial', 'ui.router'])
+        .module('app', ['ui.router'])
         .config(config)
         .controller('myController', controller);
 

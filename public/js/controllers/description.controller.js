@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('popularController')
+        .module('app')
         .controller('descriptionController', controller);
 
     //controller.$inject = [];
