@@ -1,5 +1,5 @@
 {
-  "name": "WeatherApiTest",
+  "name": "MyMoviesAppBack",
   "main": "server.js",
   "dependencies": {
     "angular": "1.4.8",
