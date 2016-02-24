@@ -5,7 +5,6 @@ var http = require('http');
 module.exports = function(app, config){
 
     app.get('/movie/:id', function(req, res){
-
         Movie.findOne({ id : req.params.id}, function(err, movie){
             if(err){
                 return res.status(500).json({ message : 'Server error'});
