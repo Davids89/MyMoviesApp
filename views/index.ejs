@@ -26,27 +26,7 @@
 
 <div ui-view></div>
 
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-
-<!-- ANGULAR -->
-<script src="../node_modules/angular/angular.min.js"></script>
-
-<script type="text/javascript" src="../bower_components/Materialize/dist/js/materialize.min.js"></script>
-
-<!-- ANGULAR CONTROLLERS -->
-<script src="../public/js/controllers/popular.controller.js"></script>
-<script src="../public/js/controllers/description.controller.js"></script>
-
-<!-- ANGULAR FACTORIES -->
-<script src="../public/js/factories/Movie.factory.js"></script>
-<script src="../public/js/factories/movies_list.factory.js"></script>
-
-<!-- ANGULAR DIRECTIVES -->
-<script src="../public/js/components/film.component/film.component.js"></script>
-
-<!-- ANGULAR UI-ROUTER-->
-<script src="../public/scripts/ui-router.js"></script>
+<script src="../bower_components/requirejs/require.js" data-main="../public/main.js"></script>
 
 </body>
 </html>
