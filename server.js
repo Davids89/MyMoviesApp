@@ -10,7 +10,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var database = require('./config/database.js');
+var database = require('./helpers/database.js');
 var http = require('http');
 var CronJob = require('cron').CronJob;
 var passport = require('passport');
@@ -21,9 +21,9 @@ app.use(bodyParser());
 
 mongoose.connect(database.url);
 
-app.use('/public', express.static(__dirname + '/public'));
+//app.use('/public', express.static(__dirname + '/public'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
-app.use('/bower_components', express.static(__dirname + '/bower_components'));
+//app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
 //app.set('view engine', 'ejs');
 
@@ -35,8 +35,8 @@ app.use(passport.session());
 
 var config = getConfiguration();
 
-require('./app/routes/routes.js')(app, passport);
-require('./app/routes/session.js')(app, passport);
+require('./controllers/routes.js')(app, passport);
+require('./middlewares/session.js')(app, passport);
 
 //api files
 
@@ -45,7 +45,7 @@ require('./app/routes/session.js')(app, passport);
 
 //task
 new CronJob('00 24 16 * * 3', function(){
-    require('./config/popularMovies.js');
+    require('./helpers/popularMovies.js');
 }, null, true, 'Europe/Madrid');
 
 app.listen(port);
@@ -61,8 +61,8 @@ function getConfiguration(){
 
         resp.on('end', function(){
             try{
-                require('./app/api/movies_api.js')(app, data);
-                require('./app/api/genres_api.js')(app, data);
+                require('./controllers/movies_api.js')(app, data);
+                require('./controllers/genres_api.js')(app, data);
             }catch(e){
                 console.log(e);
             }
