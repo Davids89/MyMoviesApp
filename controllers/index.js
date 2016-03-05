@@ -5,6 +5,7 @@ var genres_api = require('./genres_api');
 var cinema_api = require('./cinemas');
 
 // *** movies *** //
+router.get('/getPopular', movies_api.addPopular);
 router.get('/popularMovies', movies_api.getPopularMovies);
 router.get('/movie/:id', movies_api.getMovie);
 
