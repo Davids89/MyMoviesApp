@@ -31,7 +31,7 @@ mongoose.connect(config.mongoURI[app.settings.env], function(err, res){
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : false}));
+app.use(bodyParser.urlencoded({ extended : true}));
 app.use(cookieParser());
 
 // *** main routes *** //
