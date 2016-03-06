@@ -37,7 +37,7 @@ describe('Movies', function(){
             .end(function(err, res){
                 res.should.have.status(200);
                 res.should.be.json;
-                console.log(res.body);
+                res.body.should.have.property('SUCCESS');
                 done();
             })
     });
@@ -69,16 +69,28 @@ describe('Movies', function(){
 
     it('should list a SINGLE movie on /movie/<id> GET', function(done){
         chai.request(server)
-            .get('/movie/131634')
+            .get('/movie/122917')
             .end(function(err, res){
                 res.should.have.status(200);
+                res.should.be.json;
+                res.should.be.a('object');
+                res.body.should.have.property('_id');
+                res.body.should.have.property('poster_path');
+                res.body.should.have.property('adult');
+                res.body.should.have.property('overview');
+                res.body.should.have.property('release_date');
+                res.body.should.have.property('id');
+                res.body.should.have.property('original_title');
+                res.body.should.have.property('original_language');
+                res.body.should.have.property('title');
+                res.body.should.have.property('vote_count');
+                res.body.should.have.property('popular');
+                res.body.should.have.property('production_companies');
+                res.body.should.have.property('cast');
+                res.body.should.have.property('genre_ids');
                 done();
             })
     });
-
-    /*it('should add a SIMPLE blob on /blobs POST', function(done){
-
-    });*/
 
     /*it('should update a SINGLE blob on /blob/<id> PUT');
     it('should delete a SINGLE blob on /blob/<id> DELETE');*/

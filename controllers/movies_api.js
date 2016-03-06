@@ -19,8 +19,12 @@ module.exports = {
                 return res.status(500).json({ message : 'Server error'});
             }
 
-            return res.status(200).json({ movie : movie});
+            return res.status(200).json(movie);
         })
+    },
+
+    updateMovie : function(req, res){
+
     },
 
     addPopular : function(req, res){
@@ -38,6 +42,10 @@ module.exports = {
                 resp.on('end', function(){
                     try {
                         data = JSON.parse(data.toString());
+
+                        /**ESTO SE HA COMENTADO PORQUE SI HAGO UNA PETICION TENIENDO EXACTAMENTE
+                         * LAS MISMAS PELICULAS, SE ME MARCAN COMO FALSE Y NO SE MUESTRAN EN LOS TESTS
+                         */
 
                         /*Movie.find({popular : true}, function(err, popular_movie){
 
