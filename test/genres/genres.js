@@ -20,6 +20,9 @@ describe('Genres', function(){
             .get('/getMoviesByGenre/28')
             .end(function(err, res){
                 res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.a('array');
+                res.body[0].should.be.a('object');
                 done();
             })
     });
