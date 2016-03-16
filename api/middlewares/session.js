@@ -1,4 +1,4 @@
-var User = require('../models/User.js');
+var User = require('./User.js');
 var constants = require('../helpers/constants.js');
 var facebookStrategy = require('passport-facebook').Strategy;
 
