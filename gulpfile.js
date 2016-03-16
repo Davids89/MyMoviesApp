@@ -28,8 +28,8 @@ gulp.task('nodemon', function(cb){
     })
         .on('start', function onStart(){
             //we make sure start only got called once
-            console.log("START nodemon");
             if(!called){
+                console.log("START nodemon");
                 cb();
             }
             called = true;
@@ -48,10 +48,8 @@ gulp.task('nodemon', function(cb){
 gulp.task('browser-sync', ['nodemon'], function(){
     browserSync({
         proxy : 'http://localhost:8080',
-
-        port : 4000,
-
-        browser : ['google-chrome']
+        browser : ['google chrome'],
+        port : 4000
     })
 });
 
