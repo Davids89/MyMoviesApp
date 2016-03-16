@@ -3,6 +3,10 @@ var router = express.Router();
 var movies_api = require('./movies_api');
 var genres_api = require('./genres_api');
 var cinema_api = require('./cinemas');
+var general_routes = require('./general_routes');
+
+//general routes
+router.get('/', general_routes.index);
 
 // *** movies *** //
 router.get('/getPopular', movies_api.addPopular);
