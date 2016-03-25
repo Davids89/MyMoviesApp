@@ -3,10 +3,13 @@ var router = express.Router();
 var movies_api = require('./movies_api');
 var genres_api = require('./genres_api');
 var cinema_api = require('./cinemas');
-var general_routes = require('./general_routes');
+var templates = require('./routes');
 
-//general routes
-router.get('/', general_routes.index);
+// ** templates routes **//
+router.get('/', templates.getIndexTemplate);
+router.get('/popular', templates.getPopularTemplate);
+router.get('/description', templates.getDescriptionTemplate);
+
 
 // *** movies *** //
 router.get('/getPopular', movies_api.addPopular);
