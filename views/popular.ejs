@@ -1,5 +1,7 @@
+{{popularCtrl.prueba}}
+
 <div id="content">
-    <div class="popular_movies" ng-controller="myController as vm">
+    <div class="popular_movies">
         <div ng-repeat="movie in vm.popular" class="movie">
             <div class="a_popular_movie">
                 <a ui-sref="movie({ movieID : movie.id})">
