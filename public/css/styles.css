@@ -1,0 +1,24 @@
+*{box-sizing:border-box;}
+
+.generalContent{
+    background: #424242;
+}
+
+.sidenav{
+    background: #212121;
+}
+
+.popular_movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+	flex: 1 1 15%;
+	text-align: center;
+}
+
+.a_popular_movie{
+	flex: 1;
+}

@@ -1,0 +1,50 @@
+html *{
+    font-family: 'Roboto', sans-serif;
+}
+
+.description {
+    padding-bottom: 20px;
+}
+
+
+.background{
+    height: 300px;
+    overflow: hidden;
+}
+
+.background > img{
+    min-height: 100%;
+    max-width: 100%;
+    z-index: 1;
+}
+
+.poster > img {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    z-index: 2;
+    border: 1px solid white;
+}
+
+.name > h3{
+    color: white;
+    margin-left: 200px;
+    margin-bottom: 40px;
+}
+
+.movie_data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+.sinopsis_card{
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.data_card{
+    width: 30%;
+}

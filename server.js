@@ -27,6 +27,14 @@ mongoose.connect(config.mongoURI[app.settings.env], function(err, res){
     }
 });
 
+//set engine
+app.set('view engine', 'ejs');
+
+//set static files
+app.use('/public', express.static(__dirname + '/public'));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
+
 // *** config middleware *** //
 
 app.use(morgan('dev'));
