@@ -10,6 +10,7 @@ router.get('/', templates.getIndexTemplate);
 router.get('/popular', templates.getPopularTemplate);
 router.get('/description', templates.getDescriptionTemplate);
 
+
 // *** movies *** //
 router.get('/getPopular', movies_api.addPopular);
 router.get('/popularMovies', movies_api.getPopularMovies);

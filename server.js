@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 // *** routes ***//
 
-var routes = require('./controllers/index.js');
+var routes = require('./api/controllers/index.js');
 
 // *** express instance *** //
 
@@ -15,7 +15,7 @@ var app = express();
 
 // *** config file *** //
 
-var config = require('./helpers/_config.js');
+var config = require('./api/helpers/_config.js');
 
 // *** Mongoose connection *** //
 
