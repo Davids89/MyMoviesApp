@@ -1,15 +1,15 @@
-angular.module('app', ['ui.router'])
+angular.module('app')
 
 .config(config);
 
 function config($stateProvider, $urlRouterProvider){
     $stateProvider
-        .state('/', {
+        .state('main', {
             url : '/',
             templateUrl : '/popular',
             controller : 'mainController',
             controllerAs : 'popularCtrl'
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('main');
 }
