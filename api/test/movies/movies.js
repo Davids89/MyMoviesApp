@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-var server = require('../../server.js');
+var server = require('../../../server.js');
 var should = chai.should();
 var Movie = require('../../models/Movie');
 
@@ -11,25 +11,6 @@ chai.use(chaiHttp);
 describe('Movies', function(){
 
     this.timeout(20000);
-
-    /*Movie.collection.drop();
-
-    beforeEach(function(done){
-        var newMovie = new Movie({
-            original_title : 'test',
-            original_title : 'test_language'
-        });
-
-        newMovie.save(function(err){
-            console.log("entra");
-            done();
-        });
-    });
-
-    afterEach(function(done){
-        Movie.collection.drop();
-        done();
-    });*/
 
     it('should update and add popular movies on /getPopular GET', function(done){
         chai.request(server)
