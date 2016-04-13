@@ -7,15 +7,10 @@
 
 	moviesFactory.$inject = ['$http'];
 
-	function moviesFactory($http){
+	function moviesFactory(){
 
-		return {
-			getPopular : function(){
-				return $http.get('/popularMovies');
-			},
-            getMovie : function(id){
-                return $http.get('/movie/'+id);
-            }
-		}
+		var moviesFactory = {};
+
+
 	}
 })();

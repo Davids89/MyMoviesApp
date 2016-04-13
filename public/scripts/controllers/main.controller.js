@@ -12,4 +12,5 @@ function mainController(movieSrv){
     popular.prueba = 'prueba';
 
     
+    
 }
