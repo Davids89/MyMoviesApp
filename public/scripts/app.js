@@ -1,1 +1,1 @@
-angular.module('app', ['ngResource','ui.router']);
+angular.module('app', ['ngResource','ui.router', 'ngMaterial']);

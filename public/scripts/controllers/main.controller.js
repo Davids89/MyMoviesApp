@@ -2,16 +2,15 @@ angular.module('app')
 
 .controller('mainController', mainController);
 
-mainController.$inject = ['movieSrv'];
+mainController.$inject = ['moviesFactory'];
 
 function mainController(movieSrv){
     var popular = this;
 
+    console.log("entra");
+
     popular.prueba = 'prueba';
 
-    debugger;
-
-    movieSrv.getPopularMovies().get().$promise().then(function(resp){
-        console.log(resp);
-    })
+    
+    
 }

@@ -3,6 +3,7 @@ angular.module('app')
 .config(config);
 
 function config($stateProvider, $urlRouterProvider){
+
     $stateProvider
         .state('main', {
             url : '/',
@@ -11,5 +12,5 @@ function config($stateProvider, $urlRouterProvider){
             controllerAs : 'popularCtrl'
         });
 
-    $urlRouterProvider.otherwise('main');
+    $urlRouterProvider.otherwise('/');
 }
