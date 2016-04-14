@@ -5,9 +5,9 @@
 		.module('app')
 		.factory('Movie', movie);
 
-	movie.$inject = ['$http'];
+	//movie.$inject = ['$http'];
 
-	function movie($http){
+	function movie(){
 
 		var Movie = function(data){
 			this.adult = data.adult;
@@ -35,7 +35,7 @@
 			this.video = data.video;
 			this.vote_average = data.vote_average;
 			this.vote_count = data.vote_count;
-		}
+		};
 
 		return Movie;
 	}

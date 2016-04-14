@@ -22,3 +22,21 @@
 .a_popular_movie{
 	flex: 1;
 }
+
+button.nav_button{
+    border: none;
+    height: 100%;
+    background: none;
+    color: white;
+}
+
+button.nav_button:hover{
+    background-color: #283593;
+    /* opacity: 0.25; */
+    color: white;
+}
+
+span.nav_title{
+    width: 75%;
+    text-align: right;
+}

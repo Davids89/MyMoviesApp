@@ -5,6 +5,8 @@ var concat = require('gulp-concat'); //concatena
 var uglify = require('gulp-uglify'); //minifica
 var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync');
+var Server = require('karma').Server;
+var mocha = require('gulp-mocha');
 
 var BROWSER_SYNC_RELOAD_DELAY = 500;
 
@@ -43,6 +45,16 @@ gulp.task('nodemon', function(cb){
             })
         })
 
+});
+
+gulp.task('test', function(done){
+    new Server({
+        configFile : __dirname + '/karma.conf.js',
+        singleRun : true
+    }, done).start();
+    
+    gulp.src('api/test/top.js', {read : false})
+        .pipe(mocha({ reporter : 'nyan'}));
 });
 
 gulp.task('browser-sync', ['nodemon'], function(){

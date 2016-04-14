@@ -2,15 +2,26 @@ angular.module('app')
 
 .controller('mainController', mainController);
 
-mainController.$inject = ['moviesFactory'];
+mainController.$inject = ['moviesFactory', 'Movie'];
 
-function mainController(movieSrv){
+function mainController(moviesFactory, Movie){
     var popular = this;
 
-    console.log("entra");
+    popular.popularMovies = [];
 
-    popular.prueba = 'prueba';
+    popular.getDataFromAPI = function(){
+        moviesFactory.getPopularMovies.get().$promise
+            .then(function(resp){
 
-    
+                var _movie = {};
+
+                resp.map(function(movie){
+                    _movie = new Movie(movie);
+                    popular.popularMovies.push(_movie);
+                });
+            });
+    };
+
+    popular.getDataFromAPI();
     
 }
