@@ -1,6 +1,7 @@
 <html lang="en" ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyMoviesApp</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/styles.css">
@@ -12,7 +13,16 @@
 
 <md-toolbar class="">
     <h2 class="md-toolbar-tools">
-        <span>MyMovies</span>
+        <button class="nav_button" aria-label="Go Back">
+            Popular
+        </button>
+        <button class="nav_button" aria-label="Go Back">
+            Amigos
+        </button>
+        <button class="nav_button" aria-label="Go Back">
+            Go Back
+        </button>
+        <span class="nav_title">MyMovies</span>
     </h2>
 </md-toolbar>
 
@@ -23,8 +33,9 @@
 <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
-<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../bower_components/angular-mocks/angular-mocks.js"></script>
 <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 <!-- Angular Material Library -->
 <script src="../bower_components/angular-material/angular-material.min.js"></script>
@@ -35,6 +46,7 @@
 
 <!--Services-->
 <script src="../public/scripts/factories/movies_list.factory.js"></script>
+<script src="../public/scripts/factories/Movie.factory.js"></script>
 
 <!--Controllers-->
 <script src="../public/scripts/controllers/main.controller.js"></script>
