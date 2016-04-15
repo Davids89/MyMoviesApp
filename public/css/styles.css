@@ -30,6 +30,12 @@ button.nav_button{
     color: white;
 }
 
+button.nav_button.main_button{
+    position: absolute;
+    right:0;
+    width:200px;
+}
+
 button.nav_button:hover{
     background-color: #283593;
     /* opacity: 0.25; */

@@ -6,11 +6,11 @@ function config($stateProvider, $urlRouterProvider){
 
     $stateProvider
         .state('main', {
-            url : '/',
+            url : '/popular',
             templateUrl : '/popular',
             controller : 'mainController',
             controllerAs : 'popularCtrl'
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/popular');
 }
