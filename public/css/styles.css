@@ -1,0 +1,48 @@
+*{box-sizing:border-box;}
+
+.generalContent{
+    background: #424242;
+}
+
+.sidenav{
+    background: #212121;
+}
+
+.popular_movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movie {
+	flex: 1 1 15%;
+	text-align: center;
+}
+
+.a_popular_movie{
+	flex: 1;
+}
+
+button.nav_button{
+    border: none;
+    height: 100%;
+    background: none;
+    color: white;
+}
+
+button.nav_button.main_button{
+    position: absolute;
+    right:0;
+    width:200px;
+}
+
+button.nav_button:hover{
+    background-color: #283593;
+    /* opacity: 0.25; */
+    color: white;
+}
+
+span.nav_title{
+    width: 75%;
+    text-align: right;
+}
