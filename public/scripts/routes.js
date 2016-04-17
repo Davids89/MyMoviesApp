@@ -6,15 +6,15 @@ function config($stateProvider, $urlRouterProvider){
 
     $stateProvider
         .state('landing', {
-            url : '/',
-            templateUrl : '/landing'
+            url: '/',
+            templateUrl: '/landing'
         })
         .state('main', {
-            url : '/popular',
+            url : '/',
             templateUrl : '/popular',
             controller : 'mainController',
             controllerAs : 'popularCtrl'
         });
 
-    $urlRouterProvider.otherwise('/popular');
+    $urlRouterProvider.otherwise('/');
 }
