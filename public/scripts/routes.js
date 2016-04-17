@@ -10,11 +10,11 @@ function config($stateProvider, $urlRouterProvider){
             templateUrl: '/landing'
         })
         .state('main', {
-            url : '/',
+            url : '/popular',
             templateUrl : '/popular',
             controller : 'mainController',
             controllerAs : 'popularCtrl'
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/popular');
 }
