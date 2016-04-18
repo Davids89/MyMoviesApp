@@ -6,28 +6,40 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="../public/css/movie.css">
+    <link rel="stylesheet" href="../public/css/landing.css">
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
 </head>
-<body>
+<body ng-cloak>
 
-<form action="/signup" method="post">
+<div class="form_signup">
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Registrar">
+            <md-content class="md-padding">
+                <form action="/signup" method="post">
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input type="text" name="email">
+                    </md-input-container>
 
-    <div class="form_signup">
-        <md-input-container class="md-block">
-            <label>Email</label>
-            <input type="text" name="email">
-        </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Contraseña</label>
+                        <input type="text" name="password">
+                    </md-input-container>
 
-        <md-input-container class="md-block">
-            <label>Contraseña</label>
-            <input type="text" name="password">
-        </md-input-container>
+                    <md-button type="submit" class="md-raised md-primary">Registrar</md-button>
+                </form>
+            </md-content>
+        </md-tab>
 
-        <md-button type="submit" class="md-raised md-primary">Aceptar</md-button>
-    </div>
+        <md-tab label="Iniciar sesión">
+            <md-content class="md-padding">
+                Hello
+            </md-content>
+        </md-tab>
+    </md-tabs>
+</div>
 
-</form>
 
 <!-- Angular Material requires Angular.js Libraries -->
 <script src="../bower_components/angular/angular.min.js"></script>
