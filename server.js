@@ -6,7 +6,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
-
+var flash = require('connect-flash');
+var session = require('express-session');
 
 // *** routes ***//
 
@@ -20,8 +21,14 @@ var app = express();
 
 require('./api/middlewares/passport.js')(passport);
 
+app.use(session({ cookie: { maxAge: 60000 },
+    secret: 'woot',
+    resave: false,
+    saveUninitialized: false}));
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // *** config file *** //
 

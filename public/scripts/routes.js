@@ -5,10 +5,6 @@ angular.module('app')
 function config($stateProvider, $urlRouterProvider){
 
     $stateProvider
-        .state('landing', {
-            url: '/',
-            templateUrl: '/landing'
-        })
         .state('main', {
             url : '/popular',
             templateUrl : '/popular',
