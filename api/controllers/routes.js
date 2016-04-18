@@ -6,7 +6,7 @@ module.exports = {
     },
 
     getPopularTemplate : function(req, res){
-        res.render('popular.ejs');
+        res.render('popular.ejs', { message : req.flash()});
     },
 
     getDescriptionTemplate : function(req, res){

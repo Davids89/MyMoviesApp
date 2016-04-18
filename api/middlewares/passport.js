@@ -25,15 +25,22 @@ module.exports = function(passport){
         process.nextTick(function(){
             User.findOne({ 'email': email}, function(err, user){
                 console.log(err, user);
-                if(err) return done(err);
-                if(user) return done(null, false);
+                if(err)
+                    return done(err);
+                if(user){
+                    return done(null, false, req.flash('signUpMessage', 'Este email ya está registrado'));
+                }else{
+                    var newUser = new User();
 
-                User.create({
-                    email : email,
-                    password : password
-                });
+                    newUser.email = email;
+                    newUser.password = password;
 
-                done(null, user);
+                    newUser.save(function(err){
+                        if(err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
             })
         })
 
