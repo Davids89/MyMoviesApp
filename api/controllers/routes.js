@@ -19,6 +19,10 @@ module.exports = {
 
     getFriendsTemplate : function(req, res){
         res.render('friends.ejs');
+    },
+
+    getFilmComponent : function(req, res){
+        res.render('components/film.component.ejs');
     }
     /*app.get('/login/facebook',
         passport.authenticate('facebook', {scope : 'email'}));

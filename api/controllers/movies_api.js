@@ -4,7 +4,8 @@ var constants = require('../helpers/constants');
 
 module.exports = {
     getPopularMovies : function(req, res){
-        Movie.find({ popular : true}, function(err, movies){
+        //Movie.find({ popular : true}, function(err, movies){
+        Movie.find({}, function(err, movies){
             if(err){
                 return res.status(500).json({ message : 'Server error'});
             }

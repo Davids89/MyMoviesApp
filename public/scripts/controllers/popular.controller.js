@@ -1,10 +1,10 @@
 angular.module('app')
 
-.controller('mainController', mainController);
+.controller('popularController', popularController);
 
-mainController.$inject = ['moviesFactory', 'Movie'];
+popularController.$inject = ['moviesFactory', 'Movie'];
 
-function mainController(moviesFactory, Movie){
+function popularController(moviesFactory, Movie){
     var popular = this;
 
     popular.popularMovies = [];

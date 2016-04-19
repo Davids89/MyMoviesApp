@@ -2,6 +2,11 @@ html *{
     font-family: 'Roboto', sans-serif;
 }
 
+my-movie img{
+    max-height: 212px;
+    width: 154px;
+}
+
 .description {
     padding-bottom: 20px;
 }

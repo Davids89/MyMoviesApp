@@ -15,8 +15,9 @@
 }
 
 .movie {
-	flex: 1 1 15%;
+	flex: 1 1 10%;
 	text-align: center;
+    margin-bottom:3px;
 }
 
 .a_popular_movie{

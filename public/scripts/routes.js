@@ -8,7 +8,7 @@ function config($stateProvider, $urlRouterProvider){
         .state('popular', {
             url : '/popular',
             templateUrl : '/popular',
-            controller : 'mainController',
+            controller : 'popularController',
             controllerAs : 'popularCtrl'
         })
         .state('friends', {

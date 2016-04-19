@@ -1,9 +1,9 @@
 <div id="content">
     <div class="popular_movies">
-        <div ng-repeat="movie in vm.popular" class="movie">
+        <div ng-repeat="movie in popularCtrl.popularMovies" class="movie">
             <div class="a_popular_movie">
                 <a ui-sref="movie({ movieID : movie.id})">
-                    <ng-film></ng-film>
+                    <my-movie></my-movie>
                 </a>
             </div>
         </div>
