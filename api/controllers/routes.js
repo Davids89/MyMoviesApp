@@ -15,9 +15,11 @@ module.exports = {
 
     getLandingTemplate : function(req, res){
         res.render('landing.ejs')
+    },
+
+    getFriendsTemplate : function(req, res){
+        res.render('friends.ejs');
     }
-
-
     /*app.get('/login/facebook',
         passport.authenticate('facebook', {scope : 'email'}));
 

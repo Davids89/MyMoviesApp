@@ -17,6 +17,7 @@ module.exports = function(app,passport){
     app.get('/popular', templates.getPopularTemplate);
     app.get('/description', templates.getDescriptionTemplate);
     app.get('/mymovies/', templates.getIndexTemplate);
+    app.get('/friends', templates.getFriendsTemplate);
     app.get('/', templates.getLandingTemplate);
 
 // *** movies *** //
