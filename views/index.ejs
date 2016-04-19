@@ -9,18 +9,15 @@
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
 </head>
-<body>
+<body ng-controller="indexController as index">
 
 <md-toolbar class="">
     <h2 class="md-toolbar-tools">
-        <button class="nav_button" aria-label="Go Back">
+        <button class="nav_button" aria-label="" ng-click="index.goToPopular()">
             Popular
         </button>
-        <button class="nav_button" aria-label="Go Back">
+        <button class="nav_button" aria-label="" ng-click="index.goToFriends()">
             Amigos
-        </button>
-        <button class="nav_button" aria-label="Go Back">
-            Go Back
         </button>
         <span class="nav_title">MyMovies</span>
     </h2>
@@ -50,6 +47,8 @@
 
 <!--Controllers-->
 <script src="../public/scripts/controllers/main.controller.js"></script>
+<script src="../public/scripts/controllers/index.controller.js"></script>
+<script src="../public/scripts/controllers/friends.controller.js"></script>
 
 </body>
 </html>

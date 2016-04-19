@@ -16,7 +16,6 @@
 				method : 'GET',
 				isArray : true
 			}
-
 		});
 
 		return moviesFactory;
