@@ -13,8 +13,7 @@
 
 		moviesFactory.getPopularMovies = $resource("/popularMovies", {}, {
 			'get' : {
-				method : 'GET',
-				isArray : true
+				method : 'GET'
 			}
 		});
 

@@ -4,14 +4,31 @@ var constants = require('../helpers/constants');
 
 module.exports = {
     getPopularMovies : function(req, res){
-        //Movie.find({ popular : true}, function(err, movies){
-        Movie.find({}, function(err, movies){
+
+        var page;
+
+        if(req.params.page == undefined){
+            page = 1;
+        }else{
+            page = req.params.page;
+        }
+
+        Movie.paginate({}, {page : page, limit : 24}, function(err, result){
+            if(err)
+                throw err;
+            else{
+                return res.status(200).json(result);
+            }
+        });
+
+        /*Movie.find({ popular : true}, function(err, movies){
+        //Movie.find({}, function(err, movies){
             if(err){
                 return res.status(500).json({ message : 'Server error'});
             }
 
             return res.status(200).json(movies);
-        })
+        })*/
     },
 
     getMovie : function(req, res){

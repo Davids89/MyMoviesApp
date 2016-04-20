@@ -15,7 +15,7 @@ function popularController(moviesFactory, Movie){
 
                 var _movie = {};
 
-                resp.map(function(movie){
+                resp.docs.map(function(movie){
                     _movie = new Movie(movie);
                     popular.popularMovies.push(_movie);
                 });

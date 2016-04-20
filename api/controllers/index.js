@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
     
     // *** movies *** //
     app.put('/popular', movies_api.addPopular);
-    app.get('/popularMovies', movies_api.getPopularMovies);
+    app.get('/popularMovies/:page?', movies_api.getPopularMovies);
     app.get('/movie/:id', movies_api.getMovie);
 
     // *** genres ** //

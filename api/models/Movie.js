@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
 var MovieSchema = mongoose.Schema({
     poster_path : String,
@@ -18,5 +19,7 @@ var MovieSchema = mongoose.Schema({
     }],
     popular : { type : Boolean, default : false}
 });
+
+MovieSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Movie', MovieSchema);
